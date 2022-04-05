@@ -32,13 +32,18 @@ const Post = (props) => {
 export const getStaticPaths = async () => {
   // Fetch all the entries using the slug value of each entry 
   const entries = await db.collection("entries").get()
+  
   const paths = entries.docs.map(entry => ({
-    // Create an array of objects with structure: 
+  
+  // Create an array of objects with structure: 
     // Passed as paths key of object returned by getStaticPaths
+
     params: {
       slug: entry.data().slug
     }
   }));
+
+  console.log(paths.filter(({ params }) => !params.slug))
   return {
     paths,
     // fallback:true key value pair must be set to trigger static generation in the bg
