@@ -32,6 +32,7 @@ const Post = (props) => {
 export const getStaticPaths = async () => {
   // Fetch all the entries using the slug value of each entry 
   const entries = await db.collection("entries").get()
+  console.log(entries);
   
   const paths = entries.docs.map(entry => ({
   

@@ -13,7 +13,9 @@
     "dashify": "^2.0.0",
     "firebase": "^9.6.10",
     "firebase-admin": "^10.0.2",
+    "logrocket": "^2.2.1",
     "next": "12.1.4",
+    "nookies": "^2.5.2",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },

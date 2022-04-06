@@ -2,9 +2,14 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import dashify from 'dashify';
 import axios from 'axios';
+import LogRocket from 'logrocket';
+LogRocket.init('ftkfwj/jointspaces');
 
 const EditEntry = () => {
   const router = useRouter()
+
+  console.log('got to Edit Entry')
+
   const [content, setContent] = useState({
     title: undefined,
     body: undefined,
@@ -49,35 +54,43 @@ const EditEntry = () => {
     router.back();
   }
 
-  return (
-    <div>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        value={content.title}
-        onChange={onChange}
-      />
-      <label htmlFor="body">Body</label>
-      <textarea
-        name="body"
-        value={content.body}
-        onChange={onChange}
-      />
-      <button
-        type="button"
-        onClick={onSubmit}
-      >
-        Submit
-      </button>
-      <button
-        type="button"
-        onClick={onDelete}
-      >
-        Delete
-      </button>
-    </div>
-  );
+  if (router.isFallback) {
+    console.log('got to fallback')
+    return (
+      <div>loading</div>
+    )
+  } else {
+    console.log('got to frontend post')
+    return (
+      <div>
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          value={content.title}
+          onChange={onChange}
+        />
+        <label htmlFor="body">Body</label>
+        <textarea
+          name="body"
+          value={content.body}
+          onChange={onChange}
+        />
+        <button
+          type="button"
+          onClick={onSubmit}
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          onClick={onDelete}
+        >
+          Delete
+        </button>
+      </div>
+    )
+  }
 };
 
 export default EditEntry;

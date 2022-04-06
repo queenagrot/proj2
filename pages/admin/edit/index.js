@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
 import axios from 'axios';
+import LogRocket from 'logrocket';
+LogRocket.init('ftkfwj/jointspaces');
 
 // List all entries by fetching from the api/entries endpoint
 const List = () => {
